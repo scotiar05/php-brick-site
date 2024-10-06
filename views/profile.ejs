@@ -1,0 +1,26 @@
+<h1 class="title">Welcome, <%= user.username %></h1>
+
+<h2 class="subtitle">Your Friends</h2>
+<% if (user.friends.length > 0) { %>
+    <ul>
+        <% user.friends.forEach(friend => { %>
+            <li><%= friend.username %></li>
+        <% }); %>
+    </ul>
+<% } else { %>
+    <p>You don't have any friends yet.</p>
+<% } %>
+
+<h2 class="subtitle mt-4">Add a Friend</h2>
+<form action="/add-friend" method="POST">
+    <div class="field has-addons">
+        <div class="control">
+            <input class="input" type="text" name="friendUsername" placeholder="Friend's username" required>
+        </div>
+        <div class="control">
+            <button class="button is-primary" type="submit">Add Friend</button>
+        </div>
+    </div>
+</form>
+
+<a href="/logout" class="button is-light mt-4">Logout</a>
